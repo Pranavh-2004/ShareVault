@@ -3,15 +3,21 @@
 		"@iden3/js-crypto": "^1.1.0",
 		"circom": "^0.5.46",
 		"commander": "^13.0.0",
-		"ethers": "^6.13.5",
+		"dotenv": "^16.4.7",
 		"fs": "0.0.1-security",
 		"ora": "^8.1.1",
 		"path": "^0.12.7",
 		"snarkjs": "^0.7.5",
-		"typescript": "^5.7.3"
+		"typescript": "^5.7.3",
+		"utf-8-validate": "^5.0.10"
 	},
 	"packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321",
 	"devDependencies": {
-		"@types/snarkjs": "^0.7.9"
+		"@truffle/hdwallet-provider": "^2.1.15",
+		"@typechain/ethers-v6": "^0.5.1",
+		"@types/snarkjs": "^0.7.9",
+		"ethers": "^6.13.5",
+		"truffle": "^5.11.5",
+		"typechain": "^8.3.2"
 	}
 }
