@@ -1,5 +1,5 @@
 // src/storage/fragmentation.ts
-import { Buffer } from 'buffer';
+import { Buffer } from "buffer";
 
 interface FragmentationOptions {
   /**
@@ -32,11 +32,11 @@ export const fragmentFile = (
 ): Buffer[] => {
   // Validate input
   if (!Buffer.isBuffer(fileContent)) {
-    throw new Error('Input must be a Buffer');
+    throw new Error("Input must be a Buffer");
   }
 
   if (fileContent.length === 0) {
-    throw new Error('Input buffer is empty');
+    throw new Error("Input buffer is empty");
   }
 
   // Set default options
@@ -48,7 +48,7 @@ export const fragmentFile = (
 
   // Validate chunk size
   if (!Number.isInteger(chunkSize)) {
-    throw new Error('Chunk size must be an integer');
+    throw new Error("Chunk size must be an integer");
   }
 
   if (chunkSize < minChunkSize) {
@@ -79,7 +79,11 @@ export const fragmentFile = (
 
     return fragments;
   } catch (error) {
-    throw new Error(`Failed to fragment file: ${error.message}`);
+    if (error instanceof Error) {
+      throw new Error(`Failed to fragment file: ${error.message}`);
+    } else {
+      throw new Error("An unknown error occurred during file fragmentation");
+    }
   }
 };
 
