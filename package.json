@@ -2,6 +2,7 @@
 	"dependencies": {
 		"@iden3/js-crypto": "^1.1.0",
 		"circom": "^0.5.46",
+		"circomlib": "^2.0.5",
 		"commander": "^13.0.0",
 		"dotenv": "^16.4.7",
 		"fs": "0.0.1-security",
