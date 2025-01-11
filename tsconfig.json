@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2021", // Specify ECMAScript target version
+    "module": "CommonJS", // Specify module code generation
+    "lib": ["ES2021"], // Specify library files to be included
+    "outDir": "./dist", // Redirect output structure to the `dist` folder
+    "rootDir": "./src", // Specify the root directory of input files
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enable interop between CommonJS and ES modules
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in imports
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "resolveJsonModule": true, // Include modules for JSON imports
+    "declaration": true, // Generate declaration files
+    "sourceMap": true, // Generate source maps for debugging
+    "allowJs": false, // Disallow JavaScript files in the project
+    "moduleResolution": "Node", // Module resolution strategy
+    "typeRoots": ["./node_modules/@types", "./src/types"], // Specify type declaration files
+    "baseUrl": ".", // Base URL for module resolution
+    "paths": {
+      // Define module path aliases
+      "@cli/*": ["src/cli/*"],
+      "@blockchain/*": ["src/blockchain/*"],
+      "@zkp/*": ["src/zkp/*"],
+      "@storage/*": ["src/storage/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"]
+    }
+  },
+  "include": ["src/**/*"], // Include all TypeScript files in the `src` folder
+  "exclude": ["node_modules", "dist", "test/**/*"] // Exclude certain folders from compilation
+}
