@@ -1,10 +1,14 @@
-import { pedersenHash } from '@iden3/js-crypto';
-import { BigNumber } from 'ethers';
+import { poseidon } from "@iden3/js-crypto";
+import { BigNumberish } from "ethers";
 
-export function generateCommitment(data: string, randomness: string): BigNumber {
-  const dataHash = BigNumber.from(pedersenHash(Buffer.from(data)));
-  const randomHash = BigNumber.from(pedersenHash(Buffer.from(randomness)));
-  
-  // Commitment = dataHash + randomHash
-  return dataHash.add(randomHash);
+export function generateCommitment(
+  data: string,
+  randomness: string
+): BigNumberish {
+  // Convert strings to their numeric representation
+  const dataNum = BigInt("0x" + Buffer.from(data).toString("hex"));
+  const randomNum = BigInt("0x" + Buffer.from(randomness).toString("hex"));
+
+  // Use static hash method
+  return poseidon.hash([dataNum, randomNum]);
 }
