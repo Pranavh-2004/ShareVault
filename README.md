@@ -120,9 +120,3 @@ ShareVault employs:
 ### 📜 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
-### 📬 Contact
-
-For questions or collaborations, reach out at <your-email@example.com>.
