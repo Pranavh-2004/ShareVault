@@ -2,6 +2,7 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 require("dotenv").config();
 
 module.exports = {
+  test_file_extensions_regexp: /.*\.(test|spec)\.(js|ts)$/,
   networks: {
     polygon: {
       provider: () =>
