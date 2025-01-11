@@ -2,8 +2,10 @@
 	"dependencies": {
 		"@iden3/js-crypto": "^1.1.0",
 		"circom": "^0.5.46",
+		"commander": "^13.0.0",
 		"ethers": "^6.13.5",
 		"fs": "0.0.1-security",
+		"ora": "^8.1.1",
 		"path": "^0.12.7",
 		"snarkjs": "^0.7.5",
 		"typescript": "^5.7.3"
