@@ -26,6 +26,10 @@ importers:
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
+    devDependencies:
+      '@types/snarkjs':
+        specifier: ^0.7.9
+        version: 0.7.9
 
 packages:
 
@@ -50,6 +54,9 @@ packages:
 
   '@types/node@22.7.5':
     resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
+
+  '@types/snarkjs@0.7.9':
+    resolution: {integrity: sha512-pb4Bq3GI2YQOQOG0dR/YuQs/mqcuL6k/vnz68LIPtpA2frrUL3twf69a3AUK9eUmNNeW0RIKkq6scDlC75Is+g==}
 
   aes-js@4.0.0-beta.5:
     resolution: {integrity: sha512-G965FqalsNyrPqgEGON7nIx1e/OVENSgiEIzyC63haUMuvNnwIgIjMs52hlTCKhkBny7A2ORNlfY9Zu+jmGk1Q==}
@@ -300,6 +307,8 @@ snapshots:
   '@types/node@22.7.5':
     dependencies:
       undici-types: 6.19.8
+
+  '@types/snarkjs@0.7.9': {}
 
   aes-js@4.0.0-beta.5: {}
 
