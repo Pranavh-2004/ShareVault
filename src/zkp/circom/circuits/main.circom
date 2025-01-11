@@ -1,6 +1,6 @@
 pragma circom 2.2.1;
 
-include "../../../node_modules/circomlib/circuits/poseidon.circom";
+include "/home/grass/projects/hackathon/KshitijKotaPES/node_modules/circomlib/circuits/poseidon.circom";
 
 template PoseidonHash() {
     signal input data;
@@ -11,8 +11,8 @@ template PoseidonHash() {
     component poseidon = Poseidon(2);
     
     // Connect inputs to Poseidon hash component
-    poseidon.in[0] <== data;
-    poseidon.in[1] <== randomness;
+    poseidon.inputs[0] <== data;
+    poseidon.inputs[1] <== randomness;
     
     // Set output
     commitment <== poseidon.out;
