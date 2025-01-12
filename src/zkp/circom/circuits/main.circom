@@ -1,6 +1,6 @@
 pragma circom 2.2.1;
 
-include "/home/grass/projects/hackathon/KshitijKotaPES/node_modules/circomlib/circuits/poseidon.circom";
+include "/home/sampriti/Self/iitkgp/KshitijKotaPES/node_modules/circomlib/circuits/poseidon.circom";
 
 template PoseidonHash() {
     signal input data;
