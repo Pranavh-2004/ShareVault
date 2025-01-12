@@ -16,10 +16,20 @@
 	"devDependencies": {
 		"@truffle/hdwallet-provider": "^2.1.15",
 		"@typechain/ethers-v6": "^0.5.1",
+		"@types/chai": "^5.0.1",
+		"@types/ethereum-protocol": "^1.0.5",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^22.10.5",
 		"@types/snarkjs": "^0.7.9",
-		"@types/winston": "^2.4.4",
+		"chai": "^5.1.2",
+		"esm": "^3.2.25",
+		"ethereum-protocol": "^1.0.1",
 		"ethers": "^6.13.5",
 		"truffle": "^5.11.5",
-		"typechain": "^8.3.2"
+		"typechain": "^8.3.2",
+		"web3-provider-engine": "^17.0.1"
+	},
+	"scripts": {
+		"test": "truffle test --require esm"
 	}
 }
