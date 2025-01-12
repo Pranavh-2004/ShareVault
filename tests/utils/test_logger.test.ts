@@ -1,22 +1,43 @@
-// tests/utils/logger.test.ts
 import logger from "../../src/utils/logger";
+import winston from "winston";
 
 describe("logger", () => {
-  it("should log info messages", () => {
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation();
+  let mockTransport: any;
 
+  beforeEach(() => {
+    // Create a mock transport
+    mockTransport = {
+      write: jest.fn()
+    };
+
+    // Replace the console transport with our mock
+    const consoleTransport = logger.transports.find(
+      (t: any) => t instanceof winston.transports.Console
+    );
+    if (consoleTransport) {
+      logger.remove(consoleTransport);
+    }
+    logger.add(mockTransport);
+  });
+
+  afterEach(() => {
+    // Clean up
+    logger.remove(mockTransport);
+  });
+
+  it("should log info messages", () => {
     logger.info("Test info message");
 
-    expect(consoleSpy).toHaveBeenCalledWith("info: Test info message");
-    consoleSpy.mockRestore();
+    expect(mockTransport.write).toHaveBeenCalledWith(
+      expect.stringContaining("Test info message")
+    );
   });
 
   it("should log error messages", () => {
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation();
-
     logger.error("Test error message");
 
-    expect(consoleSpy).toHaveBeenCalledWith("error: Test error message");
-    consoleSpy.mockRestore();
+    expect(mockTransport.write).toHaveBeenCalledWith(
+      expect.stringContaining("Test error message")
+    );
   });
 });
