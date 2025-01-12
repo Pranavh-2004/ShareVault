@@ -11,5 +11,8 @@ module.exports = {
     transformIgnorePatterns: [
       "node_modules/(?!(some-module|another-module)/)" // If you need to transform any module from node_modules
     ],
+
+    setupFiles: ['<rootDir>/jest.setup.js'],
+      
   };
   
