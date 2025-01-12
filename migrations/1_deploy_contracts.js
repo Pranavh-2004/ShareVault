@@ -9,5 +9,6 @@ module.exports = async function (deployer, network, accounts) {
   const nonce = await web3Instance.eth.getTransactionCount(account);
 
   // Deploy the contract to the specified network with the nonce
-  await deployer.deploy(YourContract, { nonce });
+  // await deployer.deploy(YourContract, { nonce }); use this to ignore the queued transactions
+  await deployer.deploy(YourContract);
 };
