@@ -1,4 +1,3 @@
-// filepath: /home/grass/projects/hackathon/KshitijKotaPES/test/test.ts
 const { artifacts, contract } = require('truffle');
 
 contract('YourContract', (accounts) => {
@@ -8,5 +7,15 @@ contract('YourContract', (accounts) => {
     const YourContract = artifacts.require('YourContract');
     const instance = await YourContract.deployed();
     expect(instance.address).to.not.be.empty;
+  });
+
+  it('should set the message', async () => {
+    const chai = await import('chai');
+    const { expect } = chai;
+    const YourContract = artifacts.require('YourContract');
+    const instance = await YourContract.deployed();
+    await instance.setMessage("Hello, World!", { from: accounts[0] });
+    const message = await instance.message();
+    expect(message).to.equal("Hello, World!");
   });
 });

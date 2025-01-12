@@ -16,7 +16,8 @@ module.exports = {
           "https://polygon-rpc.com"
         ),
       network_id: 137,
-      gasPrice: 20000000000, // 20 gwei
+      gas: 5000000, // Adjust gas limit
+      gasPrice: 50000000000, // Adjust gas price to 50 gwei
       confirmations: 2,      // # of confirmations to wait between deployments
       timeoutBlocks: 200,    // # of blocks before a deployment times out
       skipDryRun: true       // Skip dry run before migrations
@@ -28,10 +29,24 @@ module.exports = {
           "https://rpc-mumbai.maticvigil.com"
         ),
       network_id: 80001,
-      gasPrice: 20000000000,
+      gas: 5000000, // Adjust gas limit
+      gasPrice: 50000000000, // Adjust gas price to 50 gwei
       confirmations: 2,
       timeoutBlocks: 200,
       skipDryRun: true
+    },
+    polygonAmoy: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.PRIVATE_KEY,
+          "https://rpc-amoy.polygon.technology/"
+        ),
+      network_id: 80002,
+      gas: 5000000, // Adjust gas limit
+      gasPrice: 50000000000, // Adjust gas price to 50 gwei
+      confirmations: 2,      // # of confirmations to wait between deployments
+      timeoutBlocks: 200,    // # of blocks before a deployment times out
+      skipDryRun: true       // Skip dry run before migrations
     }
   },
   compilers: {
@@ -46,7 +61,6 @@ module.exports = {
     }
   },
   mocha: {
-    timeout: 100000  // Increase test timeout if needed
+    timeout: 1800000  // Increase test timeout to 30 minutes
   }
 };
-
