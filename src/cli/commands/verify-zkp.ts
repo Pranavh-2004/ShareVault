@@ -1,6 +1,5 @@
-import { verifyProof } from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/zkp/proofVerification.ts";
-import fs from "fs";
-
+import { verifyProof } from "/home/grass/projects/hackathon/KshitijKotaPES/src/zkp/proofVerification";
+import * as fs from "fs";
 export async function verifyZKP(
   proofFilePath: string,
   publicSignalsPath: string

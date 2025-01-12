@@ -1,6 +1,6 @@
-import {generateCommitment} from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/zkp/generateCommitment.ts";
-import {generateProof} from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/zkp/proofGeneration.ts"
-import fs from "fs";
+import {generateCommitment} from "/home/grass/projects/hackathon/KshitijKotaPES/src/zkp/generateCommitment";
+import {generateProof} from "/home/grass/projects/hackathon/KshitijKotaPES/src/zkp/proofGeneration"
+import * as fs from "fs";
 
 export async function generateZKP(data: string, randomness: string) {
   try {

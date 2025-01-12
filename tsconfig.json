@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES6", 
+    "target": "ES2020", 
     "module": "CommonJS", 
-    "lib": ["ES2021"], 
+    "lib": ["ES2020", "DOM"], 
     "outDir": "./dist", 
     "rootDir": "./src", 
     "strict": true, 
@@ -12,12 +12,12 @@
     "resolveJsonModule": true, 
     "declaration": true, 
     "sourceMap": true, 
-    "allowJs": false, 
+    "allowJs": true, 
     "moduleResolution": "Node", 
     "typeRoots": ["./node_modules/@types", "./src/types"], 
     "baseUrl": ".", 
     "types": ["node","jest", "mocha", "truffle", "chai", "truffle-contracts"], 
-    "allowImportingTsExtensions": true, 
+    "allowImportingTsExtensions": false, 
     "paths": {
       "@cli/*": ["src/cli/*"],
       "@blockchain/*": ["src/blockchain/*"],
@@ -27,7 +27,7 @@
       "@types/*": ["src/types/*"]
     },
     // "moduleResolution": "bundler", 
-    "noEmit": true,  // Disable output generation, as this is primarily for testing
+    "noEmit": false,  // Disable output generation, as this is primarily for testing
   },
   "include": [
     "src/**/*", 
