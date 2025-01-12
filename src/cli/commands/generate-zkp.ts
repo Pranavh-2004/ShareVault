@@ -1,4 +1,5 @@
-import { generateCommitment, generateProof } from "../../zkp-utils";
+import {generateCommitment} from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/zkp/generateCommitment.ts";
+import {generateProof} from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/zkp/proofGeneration.ts"
 import fs from "fs";
 
 export async function generateZKP(data: string, randomness: string) {

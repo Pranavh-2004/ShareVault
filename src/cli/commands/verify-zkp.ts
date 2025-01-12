@@ -1,4 +1,4 @@
-import { verifyProof } from "../../zkp-utils";
+import { verifyProof } from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/zkp/proofVerification.ts";
 import fs from "fs";
 
 export async function verifyZKP(
