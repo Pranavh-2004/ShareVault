@@ -1,4 +1,4 @@
-import { EncryptionService } from "../src/storage/encryption";
+import { EncryptionService } from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/storage/encryption.ts";
 
 describe("EncryptionService", () => {
   const encryptionKey = "your-generated-key";

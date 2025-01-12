@@ -1,5 +1,5 @@
 import * as fs from "fs/promises";
-import { FileStore } from "../src/storage/fileStorage";
+import { FileStore } from "/home/sampriti/Self/iitkgp/KshitijKotaPES/src/storage/fileStorage.ts";
 
 describe("FileStore", () => {
   const fileStore = new FileStore(".test-storage");
