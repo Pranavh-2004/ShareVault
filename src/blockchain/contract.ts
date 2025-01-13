@@ -1,16 +1,15 @@
-import { ethers, Contract, Wallet, JsonRpcProvider } from "ethers";
-// Import the compiled contract ABI directly from the build folder
+import Web3 from "web3";
 import * as contractJSON from "../../build/contracts/YourContract.json"; // Adjust path as needed
 import { ContractConfig } from "./types/contract";
 
 /**
  * Creates a JSON-RPC provider using the provided RPC URL.
  * @param rpcUrl - The JSON-RPC URL for the Ethereum node.
- * @returns A JsonRpcProvider instance.
+ * @returns A Web3 instance.
  */
-const createProvider = (rpcUrl: string): JsonRpcProvider => {
+const createProvider = (rpcUrl: string): Web3 => {
   try {
-    return new ethers.JsonRpcProvider(rpcUrl);
+    return new Web3(new Web3.providers.HttpProvider(rpcUrl));
   } catch (error) {
     console.error("Failed to create provider:", error);
     throw error;
@@ -20,15 +19,13 @@ const createProvider = (rpcUrl: string): JsonRpcProvider => {
 /**
  * Creates a wallet signer using a private key and connects it to the specified provider.
  * @param privateKey - The private key for the wallet.
- * @param provider - The JsonRpcProvider instance.
+ * @param web3 - The Web3 instance.
  * @returns A Wallet instance connected to the provider.
  */
-const createSigner = (
-  privateKey: string,
-  provider: JsonRpcProvider
-): Wallet => {
+const createSigner = (privateKey: string, web3: Web3) => {
   try {
-    return new ethers.Wallet(privateKey, provider);
+    web3.eth.accounts.wallet.add(privateKey);
+    return web3.eth.accounts.wallet[0];
   } catch (error) {
     console.error("Failed to create signer:", error);
     throw error;
@@ -36,9 +33,9 @@ const createSigner = (
 };
 
 export class ContractManager {
-  private provider: JsonRpcProvider;
-  private signer: Wallet;
-  private contract: Contract;
+  private web3: Web3;
+  private signer: any;
+  private contract: any;
 
   constructor(config: ContractConfig) {
     // Ensure the config object is valid
@@ -47,14 +44,13 @@ export class ContractManager {
     }
 
     // Initialize provider and signer
-    this.provider = createProvider(config.rpcUrl);
-    this.signer = createSigner(config.privateKey, this.provider);
+    this.web3 = createProvider(config.rpcUrl);
+    this.signer = createSigner(config.privateKey, this.web3);
 
     // Use the compiled contract JSON to initialize the contract
-    this.contract = new ethers.Contract(
-      config.contractAddress,
+    this.contract = new this.web3.eth.Contract(
       contractJSON.abi, // Use the ABI from the compiled contract JSON
-      this.signer
+      config.contractAddress
     );
   }
 
@@ -74,12 +70,9 @@ export class ContractManager {
         throw new Error("Invalid proof format");
       }
 
-      const isValid = await this.contract.verifyProof(
-        proof.a,
-        proof.b,
-        proof.c,
-        proof.inputs
-      );
+      const isValid = await this.contract.methods
+        .verifyProof(proof.a, proof.b, proof.c, proof.inputs)
+        .call();
       return isValid;
     } catch (error) {
       console.error("Error verifying proof:", error);
@@ -92,17 +85,16 @@ export class ContractManager {
    * @param commitment - The hash commitment string to be stored.
    * @returns A promise resolving to the transaction receipt.
    */
-  async storeCommitment(
-    commitment: string
-  ): Promise<ethers.TransactionReceipt> {
+  async storeCommitment(commitment: string) {
     try {
       if (!commitment) {
         throw new Error("Commitment hash is required");
       }
 
-      const tx = await this.contract.storeCommitment(commitment);
-      const receipt = await tx.wait(); // Wait for transaction confirmation
-      return receipt;
+      const tx = await this.contract.methods.storeCommitment(commitment).send({
+        from: this.signer.address,
+      });
+      return tx;
     } catch (error) {
       console.error("Error storing commitment:", error);
       throw error;
