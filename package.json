@@ -1,6 +1,7 @@
 {
 	"dependencies": {
 		"@iden3/js-crypto": "^1.1.0",
+		"@types/web3": "^1.2.2",
 		"circomlib": "^2.0.5",
 		"commander": "^13.0.0",
 		"dotenv": "^16.4.7",
@@ -11,8 +12,8 @@
 		"path": "^0.12.7",
 		"snarkjs": "^0.7.5",
 		"tsc": "^2.0.4",
-		"typescript": "^5.7.3",
 		"utf-8-validate": "^5.0.10",
+		"web3": "^4.16.0",
 		"winston": "^3.17.0"
 	},
 	"packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321",
@@ -33,6 +34,7 @@
 		"truffle": "^5.11.5",
 		"ts-jest": "^29.2.5",
 		"typechain": "^8.3.2",
+		"typescript": "^5.7.3",
 		"web3-provider-engine": "^17.0.1"
 	},
 	"scripts": {

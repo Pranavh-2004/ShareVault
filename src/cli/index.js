@@ -36,89 +36,112 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var yargs_1 = require("yargs");
+var helpers_1 = require("yargs/helpers");
 var generate_zkp_1 = require("./commands/generate-zkp");
 var retrieve_1 = require("./commands/retrieve");
 var upload_1 = require("./commands/upload");
 var verify_zkp_1 = require("./commands/verify-zkp");
-var yargs_1 = require("yargs");
-var helpers_1 = require("yargs/helpers");
-(0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
-    .command("generate-zkp [data] [randomness]", "Generate a zero-knowledge proof", function (yargs) {
-    yargs
-        .positional("data", {
-        describe: "Input data",
-        type: "string",
-        demandOption: true,
-    })
-        .positional("randomness", {
-        describe: "Randomness for commitment",
-        type: "string",
-        demandOption: true,
-    });
-}, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, generate_zkp_1.generateZKP)(argv.data, argv.randomness)];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
-        }
-    });
-}); })
-    .command("retrieve [commitment]", "Retrieve data using a commitment", function (yargs) {
-    yargs.positional("commitment", {
-        describe: "Commitment value",
-        type: "string",
-        demandOption: true,
-    });
-}, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, retrieve_1.retrieve)(argv.commitment)];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
-        }
-    });
-}); })
-    .command("upload [filePath]", "Upload a file", function (yargs) {
-    yargs.positional("filePath", {
-        describe: "Path to the file",
-        type: "string",
-        demandOption: true,
-    });
-}, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, upload_1.upload)(argv.filePath)];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
-        }
-    });
-}); })
-    .command("verify-zkp [proofFilePath] [publicSignalsPath]", "Verify a zero-knowledge proof", function (yargs) {
-    yargs
-        .positional("proofFilePath", {
-        describe: "Path to proof file",
-        type: "string",
-        demandOption: true,
-    })
-        .positional("publicSignalsPath", {
-        describe: "Path to public signals file",
-        type: "string",
-        demandOption: true,
-    });
-}, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, verify_zkp_1.verifyZKP)(argv.proofFilePath, argv.publicSignalsPath)];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
-        }
-    });
-}); })
-    .demandCommand(1, "You need to specify a command")
+void (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
+    .command({
+    command: 'generate-zkp <data> <randomness>',
+    describe: 'Generate a zero-knowledge proof',
+    builder: function (yargs) {
+        return yargs
+            .positional('data', {
+            describe: 'Input data',
+            type: 'string',
+            demandOption: true,
+        })
+            .positional('randomness', {
+            describe: 'Randomness for commitment',
+            type: 'string',
+            demandOption: true,
+        });
+    },
+    handler: function (argv) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, generate_zkp_1.generateZKP)(argv.data, argv.randomness)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+})
+    .command({
+    command: 'retrieve <commitment>',
+    describe: 'Retrieve data using a commitment',
+    builder: function (yargs) {
+        return yargs
+            .positional('commitment', {
+            describe: 'Commitment value',
+            type: 'string',
+            demandOption: true,
+        });
+    },
+    handler: function (argv) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, retrieve_1.retrieve)(argv.commitment)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+})
+    .command({
+    command: 'upload <filePath>',
+    describe: 'Upload a file',
+    builder: function (yargs) {
+        return yargs
+            .positional('filePath', {
+            describe: 'Path to the file',
+            type: 'string',
+            demandOption: true,
+        });
+    },
+    handler: function (argv) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, upload_1.upload)(argv.filePath)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+})
+    .command({
+    command: 'verify-zkp <proofFilePath> <publicSignalsPath>',
+    describe: 'Verify a zero-knowledge proof',
+    builder: function (yargs) {
+        return yargs
+            .positional('proofFilePath', {
+            describe: 'Path to proof file',
+            type: 'string',
+            demandOption: true,
+        })
+            .positional('publicSignalsPath', {
+            describe: 'Path to public signals file',
+            type: 'string',
+            demandOption: true,
+        });
+    },
+    handler: function (argv) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, verify_zkp_1.verifyZKP)(argv.proofFilePath, argv.publicSignalsPath)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+})
+    .demandCommand(1, 'You need to specify a command')
+    .strict()
     .help()
-    .argv;
+    .parse();

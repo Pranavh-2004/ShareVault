@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2020", 
+    "target": "ESNext", 
     "module": "CommonJS", 
-    "lib": ["ES2020", "DOM"], 
+    "lib": ["ESNext", "DOM"], 
     "outDir": "./dist", 
     "rootDir": "./src", 
     "strict": true, 
     "esModuleInterop": true, 
     "forceConsistentCasingInFileNames": true, 
+    "experimentalDecorators": true, // Add this line
+    "emitDecoratorMetadata": true, // Add this line
+    "useDefineForClassFields": true,
     "skipLibCheck": true, 
     "resolveJsonModule": true, 
     "declaration": true, 
@@ -16,7 +19,7 @@
     "moduleResolution": "Node", 
     "typeRoots": ["./node_modules/@types", "./src/types"], 
     "baseUrl": ".", 
-    "types": ["node","jest", "mocha", "truffle", "chai", "truffle-contracts"], 
+    "types": ["node", "jest", "truffle", "chai", "truffle-contracts", "web3"], 
     "allowImportingTsExtensions": false, 
     "paths": {
       "@cli/*": ["src/cli/*"],
@@ -24,7 +27,9 @@
       "@zkp/*": ["src/zkp/*"],
       "@storage/*": ["src/storage/*"],
       "@utils/*": ["src/utils/*"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      
+      
     },
     // "moduleResolution": "bundler", 
     "noEmit": false,  // Disable output generation, as this is primarily for testing
